@@ -16,9 +16,22 @@ const About = () => {
           <Info />
 
           <p className="about__description">
-          As an Associate Software Engineer, I create engaging and user-friendly web applications using Angular, PHP, and React. I have two years of experience in the software development industry, working with various tools and technologies, such as TypeScript, HTML5, CSS3, RESTful APIs, Bootstrap, Git, Webpack, and testing frameworks.
-
-I graduated with a BSc(Hons) Degree in Information Technology from SLIIT in 2023, where I learned the fundamentals of web development, programming, databases, and software engineering. I am passionate about staying up-to-date with the latest trends and best practices in the tech landscape, and I constantly seek out new challenges and opportunities to improve my skills and knowledge. My goal is to collaborate with like-minded professionals and deliver web solutions that exceed expectations and meet the needs of the users and clients.
+            As a Full-Stack Developer, I build modern, scalable, and
+            user-friendly web applications by combining expertise in both
+            frontend and backend technologies. On the frontend, I work with
+            React, Next.js, Angular, and Vue.js to create seamless user
+            experiences, while on the backend I specialize in Node.js and NestJS
+            for developing robust server-side solutions. I have hands-on
+            experience with relational and non-relational databases including
+            SQL, PostgreSQL, and MongoDB, as well as deploying and managing
+            applications on AWS. With a strong foundation in TypeScript,
+            JavaScript, HTML5, CSS3, RESTful APIs, Git, and testing frameworks,
+            I bring end-to-end technical proficiency to every project. I hold a
+            BSc (Hons) in Information Technology from SLIIT (2023) and am
+            passionate about staying up-to-date with the latest tools,
+            frameworks, and cloud technologies. My goal is to collaborate with
+            innovative teams and deliver full-stack solutions that are secure,
+            scalable, and exceed client expectations.
           </p>
 
           <a download="" href={CV} className="button button--flex">
@@ -49,7 +62,6 @@ I graduated with a BSc(Hons) Degree in Information Technology from SLIIT in 2023
               ></path>
             </svg>
           </a>
-          
         </div>
       </div>
     </section>
