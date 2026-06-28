@@ -16,8 +16,8 @@ const Footer = () => {
           </li>
 
           <li>
-            <a href="#projects" className="footer__link">
-              Projects
+            <a href="#qualifications" className="footer__link">
+              Qualifications
             </a>
           </li>
 
@@ -30,33 +30,35 @@ const Footer = () => {
 
         <div className="footer__social">
           <a
-            href="https://www.facebook.com/"
+            href="https://www.linkedin.com/in/seliya-kumanayaka-9610911b9/"
             className="footer__social-link"
             target="_blank"
             rel="noreferrer"
           >
-            <i className="bx bxl-facebook"></i>
+            <i className="bx bxl-linkedin"></i>
           </a>
 
           <a
-            href="https://www.instagram.com/"
+            href="https://github.com/SeliyaMindula"
             className="footer__social-link"
             target="_blank"
             rel="noreferrer"
           >
-            <i className="bx bxl-instagram"></i>
+            <i className="bx bxl-github"></i>
           </a>
 
           <a
-            href="https://twitter.com/"
+            href="mailto:Seliyakumanayaka18@gmail.com"
             className="footer__social-link"
             target="_blank"
             rel="noreferrer"
           >
-            <i className="bx bxl-twitter"></i>
+            <i className="bx bx-mail-send"></i>
           </a>
         </div>
-        <span className="footer__copy">&#169; All rigths reserved</span>
+        <span className="footer__copy">
+          &#169; {new Date().getFullYear()} Seliya Kumanayaka. All rights reserved.
+        </span>
       </div>
     </footer>
   );

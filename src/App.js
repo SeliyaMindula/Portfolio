@@ -1,4 +1,5 @@
 import React from "react";
+import { ThemeProvider } from "./context/ThemeContext";
 import "./App.css";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
@@ -11,21 +12,20 @@ import ScrollUp from "./components/scrollup/ScrollUp";
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <Header />
 
       <main className="main">
         <Home />
         <About />
-        <Skills/>
-        <Qualification/>
-        <Contact/>
-        
+        <Skills />
+        <Qualification />
+        <Contact />
       </main>
 
-      <Footer/>
-      <ScrollUp/>
-    </>
+      <Footer />
+      <ScrollUp />
+    </ThemeProvider>
   );
 }
 

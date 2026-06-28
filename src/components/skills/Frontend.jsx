@@ -10,16 +10,8 @@ const Frontend = () => {
           <div className="skills__data">
             <i className="bx bx-badge-check"></i>
             <div>
-              <h3 className="skills__name">React</h3>
+              <h3 className="skills__name">React.js</h3>
               <span className="skills__level">Advanced</span>
-            </div>
-          </div>
-
-          <div className="skills__data">
-            <i className="bx bx-badge-check"></i>
-            <div>
-              <h3 className="skills__name">Next.js</h3>
-              <span className="skills__level">Intermediate</span>
             </div>
           </div>
 
@@ -30,13 +22,21 @@ const Frontend = () => {
               <span className="skills__level">Advanced</span>
             </div>
           </div>
+
+          <div className="skills__data">
+            <i className="bx bx-badge-check"></i>
+            <div>
+              <h3 className="skills__name">Vue.js</h3>
+              <span className="skills__level">Intermediate</span>
+            </div>
+          </div>
         </div>
 
         <div className="skills__group">
           <div className="skills__data">
             <i className="bx bx-badge-check"></i>
             <div>
-              <h3 className="skills__name">Vue.js</h3>
+              <h3 className="skills__name">React Native</h3>
               <span className="skills__level">Intermediate</span>
             </div>
           </div>
@@ -52,7 +52,7 @@ const Frontend = () => {
           <div className="skills__data">
             <i className="bx bx-badge-check"></i>
             <div>
-              <h3 className="skills__name">Tailwind / Bootstrap</h3>
+              <h3 className="skills__name">HTML / CSS / JavaScript</h3>
               <span className="skills__level">Advanced</span>
             </div>
           </div>

@@ -1,78 +1,71 @@
-.footer{
-    background-color: var(--container-color);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+.footer {
+  background: var(--container-color);
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.35s ease, border-color 0.35s ease;
 }
 
-.footer__container{
-    padding: 2rem 0 6rem;
+.footer__container {
+  padding: 2rem 0 6rem;
 }
 
 .footer__title,
-.footer__link{
-    color: var(--title-color);
+.footer__link {
+  color: var(--title-color);
+  transition: color 0.3s;
 }
 
-.footer__title{
-    text-align: center;
-    margin-bottom: var(--mb-2);
+.footer__title {
+  text-align: center;
+  margin-bottom: var(--mb-2);
 }
 
-.footer__link:hover{
-    color: var(--title-color-dark);
+.footer__link:hover {
+  color: var(--accent-color);
 }
 
-.footer__list{
-    display: flex;
-    justify-content: center;
-    column-gap: 1.5rem;
-    margin-bottom: var(--mb-2);
+.footer__list {
+  display: flex;
+  justify-content: center;
+  column-gap: 2rem;
+  margin-bottom: var(--mb-2);
 }
 
-.footer__social{
-    display: flex;
-    justify-content: center;
-    column-gap: 1.25rem;
+.footer__social {
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
 }
 
-.footer__social-link{
-    background-color: var(--title-color);
-    color: var(--container-color);
-    font-size: 1.125rem;
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    display: inline-flex;
+.footer__social-link {
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  color: var(--title-color);
+  font-size: 1.125rem;
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  transition: all 0.3s ease;
 }
 
-.footer__social-link:hover{
-    background-color: var(--title-color-dark);
+.footer__social-link:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  border-color: transparent;
+  color: var(--button-text);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--accent-glow);
 }
 
-.footer__copy{
-    display: block;
-    margin-top: 4.5rem;
-    color: var(--title-color);
-    text-align: center;
-    font-size: var(--small-font-size);
+.footer__copy {
+  display: block;
+  margin-top: 3rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: var(--small-font-size);
 }
-
-/*Breackpoint*/
 
 @media screen and (max-width: 992px) {
-    .footer__social-link{
-        padding: 0.25rem;
-        border-radius: 0.25rem;
-        font-size: 1rem;
-    }
+  .footer__social-link {
+    padding: 0.5rem;
+    font-size: 1rem;
   }
-  
-  @media screen and (max-width: 768px) {
-    
-  }
-  
-  @media screen and (max-width: 576px) {
-  }
-  
-  @media screen and (max-width: 350px) {
-   
-  }
-  
+}

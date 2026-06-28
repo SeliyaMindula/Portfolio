@@ -18,7 +18,7 @@ const CloudDevOps = () => {
           <div className="skills__data">
             <i className="bx bx-badge-check"></i>
             <div>
-              <h3 className="skills__name">Docker</h3>
+              <h3 className="skills__name">Azure</h3>
               <span className="skills__level">Intermediate</span>
             </div>
           </div>
@@ -26,7 +26,7 @@ const CloudDevOps = () => {
           <div className="skills__data">
             <i className="bx bx-badge-check"></i>
             <div>
-              <h3 className="skills__name">CI/CD (GitHub Actions)</h3>
+              <h3 className="skills__name">Docker</h3>
               <span className="skills__level">Intermediate</span>
             </div>
           </div>
@@ -36,7 +36,15 @@ const CloudDevOps = () => {
           <div className="skills__data">
             <i className="bx bx-badge-check"></i>
             <div>
-              <h3 className="skills__name">Git & GitHub</h3>
+              <h3 className="skills__name">CI/CD Pipelines</h3>
+              <span className="skills__level">Intermediate</span>
+            </div>
+          </div>
+
+          <div className="skills__data">
+            <i className="bx bx-badge-check"></i>
+            <div>
+              <h3 className="skills__name">Git / GitHub / GitLab</h3>
               <span className="skills__level">Advanced</span>
             </div>
           </div>

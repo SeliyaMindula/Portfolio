@@ -1,53 +1,49 @@
-.scrollup{
-    position: fixed;
-    right: 2.5rem;
-    bottom: -20%;
-    background-color: var(--title-color);
-    opacity: 0.8;
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.4rem;
-    z-index: var(--z-tooltip);
-    transition: .4s;
+.scrollup {
+  position: fixed;
+  right: 2rem;
+  bottom: -20%;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  opacity: 0.9;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  z-index: var(--z-tooltip);
+  transition: bottom 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px var(--accent-glow);
 }
 
-.scrollup__icon{
-    font-size: 1.5rem;
-    color: var(--container-color);
+.scrollup__icon {
+  font-size: 1.5rem;
+  color: var(--button-text);
 }
 
-.scrollup:hover{
-    background-color: var(--title-color-dark);
+.scrollup:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--accent-glow);
 }
 
-/*Show scroll*/
-
-.show-scroll{
-   bottom: 3rem; 
+.show-scroll {
+  bottom: 3rem;
 }
-
-/*Breackpoint*/
 
 @media screen and (max-width: 992px) {
-   .scrollup{
+  .scrollup {
     right: 1.5rem;
-    padding: 0.25rem 0.4rem;
-   }
-
-   .scrollup__icon{
+    padding: 0.4rem 0.55rem;
+  }
+  .scrollup__icon {
     font-size: 1.25rem;
-   }
   }
-  
-  @media screen and (max-width: 768px) {
-   .show-scroll{
-    bottom: 4rem;
-   }
+}
+
+@media screen and (max-width: 768px) {
+  .show-scroll {
+    bottom: 4.5rem;
   }
-  
-  
-  @media screen and (max-width: 350px) {
-   .scrollup{
+}
+
+@media screen and (max-width: 350px) {
+  .scrollup {
     right: 1rem;
-   }
   }
-  
+}
