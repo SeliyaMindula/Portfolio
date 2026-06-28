@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
-import LogoLight from "../../assets/logo.png";
-import LogoDark from "../../assets/logo-dark.png";
-import { useTheme } from "../../context/ThemeContext";
 import { NAV_LINKS } from "../../data/portfolio";
 import { Container } from "../ui/Section";
 
 const Header = () => {
-  const { theme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");
   const [scrolled, setScrolled] = useState(false);
@@ -54,15 +50,7 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <Container className="flex h-14 md:h-[4.5rem] items-center justify-between">
-        <a href="#home" onClick={() => handleNavClick("#home")}>
-          <img
-            src={theme === "dark" ? LogoDark : LogoLight}
-            alt="Seliya Kumanayaka"
-            className="h-9 md:h-10 w-auto transition-transform hover:scale-105"
-          />
-        </a>
-
+      <Container className="relative flex h-14 md:h-[4.5rem] items-center justify-end md:justify-center">
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(({ href, label }) => (
             <a key={href} href={href} onClick={() => handleNavClick(href)} className={linkClass(href)}>
@@ -71,7 +59,7 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 md:absolute md:right-0">
           <ThemeToggle />
           <button
             type="button"
