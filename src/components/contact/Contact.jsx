@@ -1,10 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { CONTACT_CARDS } from "../../data/portfolio";
 import AnimatedSection from "../common/AnimatedSection";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
 import { Section, SectionHeader, Container } from "../ui/Section";
+
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_0wgu52u";
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_dmqyceo";
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "ugIp_KbdrCcjmY1d5";
 
 const SendIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -18,12 +22,36 @@ const inputClass =
 
 const Contact = () => {
   const form = useRef();
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+
     emailjs
-      .sendForm("service_0wgu52u", "template_dmqyceo", form.current, "ugIp_KbdrCcjmY1d5")
-      .then(() => e.target.reset());
+      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then(() => {
+        setStatus("success");
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        setStatus("error");
+
+        const message = error?.text || "";
+        if (message.includes("Invalid grant") || message.includes("Gmail_API")) {
+          setErrorMessage(
+            "Email service needs to be reconnected. Please contact me directly at Seliyakumanayaka18@gmail.com for now."
+          );
+        } else {
+          setErrorMessage(
+            message ||
+              "Failed to send message. Please email me directly at Seliyakumanayaka18@gmail.com"
+          );
+        }
+      });
   };
 
   return (
@@ -68,31 +96,73 @@ const Contact = () => {
             Write me your project
           </h3>
           <form ref={form} onSubmit={sendEmail} className="max-w-md mx-auto space-y-6">
-            {[
-              { name: "name", label: "Name", type: "text", placeholder: "Insert your name" },
-              { name: "email", label: "Mail", type: "email", placeholder: "Insert your email" },
-            ].map(({ name, label, type, placeholder }) => (
-              <div key={name} className="relative">
-                <label className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400">
-                  {label}
-                </label>
-                <input type={type} name={name} required placeholder={placeholder} className={inputClass} />
-              </div>
-            ))}
             <div className="relative">
-              <label className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400">
+              <label
+                htmlFor="user_name"
+                className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400"
+              >
+                Name
+              </label>
+              <input
+                id="user_name"
+                type="text"
+                name="user_name"
+                required
+                placeholder="Insert your name"
+                className={inputClass}
+              />
+            </div>
+
+            <div className="relative">
+              <label
+                htmlFor="user_email"
+                className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400"
+              >
+                Mail
+              </label>
+              <input
+                id="user_email"
+                type="email"
+                name="user_email"
+                required
+                placeholder="Insert your email"
+                className={inputClass}
+              />
+            </div>
+
+            <div className="relative">
+              <label
+                htmlFor="message"
+                className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400"
+              >
                 Project
               </label>
               <textarea
-                name="project"
+                id="message"
+                name="message"
                 rows="8"
                 required
                 placeholder="Write your project"
                 className={`${inputClass} resize-none`}
               />
             </div>
-            <Button type="submit" className="w-full justify-center">
-              Send Message <SendIcon />
+
+            {status === "success" && (
+              <p className="text-sm text-green-600 dark:text-green-400 text-center">
+                Message sent successfully! I will get back to you soon.
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="text-sm text-red-600 dark:text-red-400 text-center">{errorMessage}</p>
+            )}
+
+            <Button
+              type="submit"
+              className="w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? "Sending..." : "Send Message"} {status !== "sending" && <SendIcon />}
             </Button>
           </form>
         </AnimatedSection>
