@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./header.css";
 import ThemeToggle from "./ThemeToggle";
 import LogoLight from "../../assets/logo.png";
 import LogoDark from "../../assets/logo-dark.png";
 import { useTheme } from "../../context/ThemeContext";
+import { NAV_LINKS } from "../../data/portfolio";
+import { Container } from "../ui/Section";
 
 const Header = () => {
   const { theme } = useTheme();
-  const [toggle, showMenu] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,12 +20,12 @@ const Header = () => {
       const scrollY = window.scrollY + 120;
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute("id");
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute("id");
 
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-          setActiveNav(`#${sectionId}`);
+        if (scrollY >= top && scrollY < top + height) {
+          setActiveNav(`#${id}`);
         }
       });
     };
@@ -33,101 +34,75 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (nav) => {
-    setActiveNav(nav);
-    showMenu(false);
+  const handleNavClick = (href) => {
+    setActiveNav(href);
+    setMenuOpen(false);
   };
 
+  const linkClass = (href) =>
+    `text-sm font-medium transition-colors relative after:absolute after:-bottom-1.5 after:left-1/2 after:h-0.5 after:w-5 after:-translate-x-1/2 after:rounded after:transition-transform after:scale-x-0 hover:after:scale-x-100 ${
+      activeNav === href
+        ? "text-brand-light after:scale-x-100 after:bg-brand-light dark:text-slate-100 dark:after:bg-gradient-to-r dark:after:from-indigo-500 dark:after:to-violet-500"
+        : "text-zinc-500 hover:text-zinc-800 dark:text-slate-400 dark:hover:text-slate-100 dark:after:from-indigo-500 dark:after:to-violet-500"
+    }`;
+
   return (
-    <header className={`header ${scrolled ? "scroll-header" : ""}`}>
-      <nav className="nav container">
-        <a href="#home" className="nav__logo" onClick={() => handleNavClick("#home")}>
+    <header
+      className={`fixed z-50 w-full transition-all duration-300 md:top-0 md:bottom-auto bottom-0 top-auto ${
+        scrolled
+          ? "border-black/10 bg-[#fafafa]/90 shadow-md backdrop-blur-md dark:border-slate-700/50 dark:bg-[#08080f]/90 md:border-b md:border-t-0 border-t"
+          : "bg-transparent"
+      }`}
+    >
+      <Container className="flex h-14 md:h-[4.5rem] items-center justify-between">
+        <a href="#home" onClick={() => handleNavClick("#home")}>
           <img
             src={theme === "dark" ? LogoDark : LogoLight}
             alt="Seliya Kumanayaka"
-            className="nav__logo-img"
+            className="h-9 md:h-10 w-auto transition-transform hover:scale-105"
           />
         </a>
 
-        <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
-          <ul className="nav__list grid">
-            <li className="nav__item">
-              <a
-                href="#home"
-                onClick={() => handleNavClick("#home")}
-                className={
-                  activeNav === "#home" ? "nav__link active-link" : "nav__link"
-                }
-              >
-                <i className="uil uil-estate nav__icon"></i> Home
-              </a>
-            </li>
+        <nav className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map(({ href, label }) => (
+            <a key={href} href={href} onClick={() => handleNavClick(href)} className={linkClass(href)}>
+              {label}
+            </a>
+          ))}
+        </nav>
 
-            <li className="nav__item">
-              <a
-                href="#about"
-                onClick={() => handleNavClick("#about")}
-                className={
-                  activeNav === "#about" ? "nav__link active-link" : "nav__link"
-                }
-              >
-                <i className="uil uil-user nav__icon"></i>About
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#skills"
-                onClick={() => handleNavClick("#skills")}
-                className={
-                  activeNav === "#skills" ? "nav__link active-link" : "nav__link"
-                }
-              >
-                <i className="uil uil-file-alt nav__icon"></i>Skills
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#qualifications"
-                onClick={() => handleNavClick("#qualifications")}
-                className={
-                  activeNav === "#qualifications"
-                    ? "nav__link active-link"
-                    : "nav__link"
-                }
-              >
-                <i className="uil uil-scenery nav__icon"></i>Qualifications
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a
-                href="#contact"
-                onClick={() => handleNavClick("#contact")}
-                className={
-                  activeNav === "#contact" ? "nav__link active-link" : "nav__link"
-                }
-              >
-                <i className="uil uil-message nav__icon"></i>Contact
-              </a>
-            </li>
-          </ul>
-
-          <i
-            className="uil uil-times nav__close"
-            onClick={() => showMenu(false)}
-          ></i>
-        </div>
-
-        <div className="nav__actions">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
+          <button
+            type="button"
+            className="md:hidden text-xl text-zinc-800 dark:text-slate-100"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <i className={`uil ${menuOpen ? "uil-times" : "uil-apps"}`} />
+          </button>
+        </div>
+      </Container>
 
-          <div className="nav__toggle" onClick={() => showMenu(!toggle)}>
-            <i className="uil uil-apps"></i>
+      {menuOpen && (
+        <div className="md:hidden fixed inset-x-0 bottom-14 border-t border-black/10 bg-white/95 p-6 backdrop-blur-md dark:border-slate-700/50 dark:bg-[#161622]/95">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {NAV_LINKS.map(({ href, label, icon }) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => handleNavClick(href)}
+                className={`flex flex-col items-center gap-1 text-xs ${
+                  activeNav === href ? "text-brand-light dark:text-indigo-400" : "text-zinc-600 dark:text-slate-400"
+                }`}
+              >
+                <i className={`uil ${icon} text-lg`} />
+                {label}
+              </a>
+            ))}
           </div>
         </div>
-      </nav>
+      )}
     </header>
   );
 };

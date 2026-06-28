@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
-import "./App.css";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -14,15 +13,13 @@ function App() {
   return (
     <ThemeProvider>
       <Header />
-
-      <main className="main">
+      <main className="pb-14 md:pb-0">
         <Home />
         <About />
         <Skills />
         <Qualification />
         <Contact />
       </main>
-
       <Footer />
       <ScrollUp />
     </ThemeProvider>

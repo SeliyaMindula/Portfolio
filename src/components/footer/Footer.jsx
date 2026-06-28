@@ -1,67 +1,42 @@
 import React from "react";
-import "./footer.css";
+import { FOOTER_LINKS, FOOTER_SOCIAL } from "../../data/portfolio";
+import { Container } from "../ui/Section";
 
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="footer__title container">
-        {/* <h1 className="footer__title">Seliya</h1> */}
-        <br></br>
-
-        <ul className="footer__list">
-          <li>
-            <a href="#about" className="footer__link">
-              About
+const Footer = () => (
+  <footer className="border-t border-black/10 bg-white py-8 dark:border-slate-700/50 dark:bg-[#161622]">
+    <Container className="text-center">
+      <ul className="flex justify-center gap-6 mb-6">
+        {FOOTER_LINKS.map(({ href, label }) => (
+          <li key={href}>
+            <a
+              href={href}
+              className="text-sm text-zinc-800 hover:text-brand-light transition-colors dark:text-slate-100 dark:hover:text-indigo-400"
+            >
+              {label}
             </a>
           </li>
+        ))}
+      </ul>
 
-          <li>
-            <a href="#qualifications" className="footer__link">
-              Qualifications
-            </a>
-          </li>
-
-          <li>
-            <a href="#skills" className="footer__link">
-              Skills
-            </a>
-          </li>
-        </ul>
-
-        <div className="footer__social">
+      <div className="flex justify-center gap-4 mb-8">
+        {FOOTER_SOCIAL.map(({ href, icon }) => (
           <a
-            href="https://www.linkedin.com/in/seliya-kumanayaka-9610911b9/"
-            className="footer__social-link"
+            key={href}
+            href={href}
             target="_blank"
             rel="noreferrer"
+            className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-800 text-white transition-all hover:bg-black dark:bg-zinc-800 dark:hover:bg-gradient-to-br dark:hover:from-indigo-500 dark:hover:to-violet-500"
           >
-            <i className="bx bxl-linkedin"></i>
+            <i className={`bx ${icon}`} />
           </a>
-
-          <a
-            href="https://github.com/SeliyaMindula"
-            className="footer__social-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <i className="bx bxl-github"></i>
-          </a>
-
-          <a
-            href="mailto:Seliyakumanayaka18@gmail.com"
-            className="footer__social-link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <i className="bx bx-mail-send"></i>
-          </a>
-        </div>
-        <span className="footer__copy">
-          &#169; {new Date().getFullYear()} Seliya Kumanayaka. All rights reserved.
-        </span>
+        ))}
       </div>
-    </footer>
-  );
-};
+
+      <p className="text-xs text-zinc-500 dark:text-slate-500">
+        &copy; {new Date().getFullYear()} Seliya Kumanayaka. All rights reserved.
+      </p>
+    </Container>
+  </footer>
+);
 
 export default Footer;

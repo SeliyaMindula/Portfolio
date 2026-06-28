@@ -1,163 +1,79 @@
 import React, { useState } from "react";
-import "./qualification.css";
+import { EDUCATION, EXPERIENCE } from "../../data/portfolio";
 import AnimatedSection from "../common/AnimatedSection";
+import Card from "../ui/Card";
+import { Section, SectionHeader, Container } from "../ui/Section";
+
+const TimelineItem = ({ title, subtitle, period, align }) => (
+  <div className={`grid grid-cols-[1fr_auto_1fr] gap-6 items-start ${align === "left" ? "" : ""}`}>
+    {align === "left" ? (
+      <>
+        <Card className="!p-5">
+          <h3 className="font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
+          <p className="mt-1 text-sm text-brand-light dark:text-indigo-400">{subtitle}</p>
+          <p className="mt-2 flex items-center gap-1 text-xs text-zinc-500 dark:text-slate-500">
+            <i className="uil uil-calendar-alt" /> {period}
+          </p>
+        </Card>
+        <div className="flex flex-col items-center">
+          <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 shadow shadow-indigo-500/40" />
+          <span className="w-0.5 flex-1 min-h-[2rem] bg-gradient-to-b from-indigo-500/40 to-violet-500/40" />
+        </div>
+        <div />
+      </>
+    ) : (
+      <>
+        <div />
+        <div className="flex flex-col items-center">
+          <span className="h-3.5 w-3.5 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 shadow shadow-indigo-500/40" />
+          <span className="w-0.5 flex-1 min-h-[2rem] bg-gradient-to-b from-indigo-500/40 to-violet-500/40" />
+        </div>
+        <Card className="!p-5">
+          <h3 className="font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
+          <p className="mt-1 text-sm text-brand-light dark:text-indigo-400">{subtitle}</p>
+          <p className="mt-2 flex items-center gap-1 text-xs text-zinc-500 dark:text-slate-500">
+            <i className="uil uil-calendar-alt" /> {period}
+          </p>
+        </Card>
+      </>
+    )}
+  </div>
+);
 
 const Qualification = () => {
-  const [toggleState, setToggleState] = useState(1);
+  const [tab, setTab] = useState("education");
+  const items = tab === "education" ? EDUCATION : EXPERIENCE;
 
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
+  const tabClass = (name) =>
+    `inline-flex items-center gap-2 px-6 py-3 rounded-xl border text-sm font-medium cursor-pointer transition-all ${
+      tab === name
+        ? "bg-zinc-800 text-white border-transparent dark:bg-gradient-to-br dark:from-indigo-500 dark:to-violet-500 dark:shadow-lg dark:shadow-indigo-500/30"
+        : "bg-white border-black/10 text-zinc-600 hover:border-zinc-400 dark:bg-[#161622] dark:border-slate-700/50 dark:text-slate-400 dark:hover:border-indigo-500/40"
+    }`;
 
   return (
-    <section className="qualification section" id="qualifications">
-      <AnimatedSection>
-        <h2 className="section__title">Qualification</h2>
-        <span className="section__subtitle">My personal journey</span>
-      </AnimatedSection>
+    <Section id="qualifications">
+      <SectionHeader title="Qualification" subtitle="My personal journey" />
 
       <AnimatedSection delay={0.15}>
-        <div className="qualification__container container">
-          <div className="qualification__tabs">
-            <div
-              className={
-                toggleState === 1
-                  ? "qualification__button qualification__active button--flex"
-                  : "qualification__button button--flex"
-              }
-              onClick={() => toggleTab(1)}
-            >
-              <i className="uil uil-graduation-cap qualification__icon"></i>
-              Education
-            </div>
-
-            <div
-              className={
-                toggleState === 2
-                  ? "qualification__button qualification__active button--flex"
-                  : "qualification__button button--flex"
-              }
-              onClick={() => toggleTab(2)}
-            >
-              <i className="uil uil-briefcase-alt qualification__icon"></i>
-              Experience
-            </div>
+        <Container className="max-w-3xl">
+          <div className="flex justify-center gap-4 mb-10 flex-wrap">
+            <button type="button" className={tabClass("education")} onClick={() => setTab("education")}>
+              <i className="uil uil-graduation-cap text-lg" /> Education
+            </button>
+            <button type="button" className={tabClass("experience")} onClick={() => setTab("experience")}>
+              <i className="uil uil-briefcase-alt text-lg" /> Experience
+            </button>
           </div>
 
-          <div className="qualification__sections">
-            <div
-              className={
-                toggleState === 1
-                  ? "qualification__content qualification__content-active"
-                  : "qualification__content"
-              }
-            >
-              <div className="qualification__data">
-                <div></div>
-                <div>
-                  <span className="qualification__rounder"></span>
-                  <span className="qualification__line"></span>
-                </div>
-                <div className="qualification__card">
-                  <h3 className="qualification__title">
-                    Sri Lanka Institute of Information Technology
-                  </h3>
-                  <span className="qualification__subtitle">
-                    BSc. Special (Hons) – Information Technology
-                  </span>
-                  <div className="qualification__calender">
-                    <i className="uil uil-calendar-alt"></i>
-                    2019 - 2023
-                  </div>
-                </div>
-              </div>
-
-              <div className="qualification__data">
-                <div className="qualification__card">
-                  <h3 className="qualification__title">Matara Central College</h3>
-                  <span className="qualification__subtitle">
-                    GCE Advanced Level
-                  </span>
-                  <div className="qualification__calender">
-                    <i className="uil uil-calendar-alt"></i>
-                    2016 - 2018
-                  </div>
-                </div>
-                <div>
-                  <span className="qualification__rounder"></span>
-                  <span className="qualification__line"></span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className={
-                toggleState === 2
-                  ? "qualification__content qualification__content-active"
-                  : "qualification__content"
-              }
-            >
-              <div className="qualification__data">
-                <div></div>
-                <div>
-                  <span className="qualification__rounder"></span>
-                  <span className="qualification__line"></span>
-                </div>
-                <div className="qualification__card">
-                  <h3 className="qualification__title">Equitymatch</h3>
-                  <span className="qualification__subtitle">
-                    Software Engineer
-                  </span>
-                  <div className="qualification__calender">
-                    <i className="uil uil-calendar-alt"></i>
-                    Jun 2024 - Present
-                  </div>
-                </div>
-              </div>
-
-              <div className="qualification__data">
-                <div className="qualification__card">
-                  <h3 className="qualification__title">
-                    Yara Technologies (Pvt) Ltd
-                  </h3>
-                  <span className="qualification__subtitle">
-                    Associate Software Engineer
-                  </span>
-                  <div className="qualification__calender">
-                    <i className="uil uil-calendar-alt"></i>
-                    Oct 2022 - Nov 2023
-                  </div>
-                </div>
-                <div>
-                  <span className="qualification__rounder"></span>
-                  <span className="qualification__line"></span>
-                </div>
-              </div>
-
-              <div className="qualification__data">
-                <div></div>
-                <div>
-                  <span className="qualification__rounder"></span>
-                  <span className="qualification__line"></span>
-                </div>
-                <div className="qualification__card">
-                  <h3 className="qualification__title">
-                    Bluechip Technologies Asia (Pvt) Ltd
-                  </h3>
-                  <span className="qualification__subtitle">
-                    React Web Developer - Internship
-                  </span>
-                  <div className="qualification__calender">
-                    <i className="uil uil-calendar-alt"></i>
-                    Jul 2021 - Jan 2022
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="space-y-2 animate-fade-in-up">
+            {items.map((item) => (
+              <TimelineItem key={item.title} {...item} />
+            ))}
           </div>
-        </div>
+        </Container>
       </AnimatedSection>
-    </section>
+    </Section>
   );
 };
 
