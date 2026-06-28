@@ -41,14 +41,23 @@ const Contact = () => {
                 <i className={`bx ${icon} text-3xl text-brand-light dark:text-indigo-400`} />
                 <h4 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h4>
                 <p className="my-2 text-xs text-zinc-500 break-all dark:text-slate-500">{value}</p>
-                <a
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noreferrer" : undefined}
-                  className="inline-flex items-center gap-1 text-xs font-medium text-brand-light hover:gap-2 transition-all dark:text-indigo-400"
-                >
-                  Write me <i className="bx bx-right-arrow-alt" />
-                </a>
+                {external ? (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-brand-light hover:gap-2 transition-all dark:text-indigo-400"
+                  >
+                    Write me <i className="bx bx-right-arrow-alt" />
+                  </a>
+                ) : (
+                  <a
+                    href={href}
+                    className="inline-flex items-center gap-1 text-xs font-medium text-brand-light hover:gap-2 transition-all dark:text-indigo-400"
+                  >
+                    Write me <i className="bx bx-right-arrow-alt" />
+                  </a>
+                )}
               </Card>
             ))}
           </div>
