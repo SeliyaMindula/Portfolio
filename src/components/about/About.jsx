@@ -41,12 +41,12 @@ const About = () => (
         </div>
 
         <p className="mb-6 leading-relaxed text-zinc-600 dark:text-slate-400 md:text-left text-center">
-          Highly motivated and results-oriented Full-Stack Developer with a strong foundation
-          in design, integration, and problem-solving. Passionate about translating business
-          requirements into technical solutions and successfully implementing and launching new
-          projects. I develop and maintain full-stack web applications using React.js, Node.js,
-          NestJS, and MongoDB, with experience in Angular, Vue.js, AWS cloud services, and CI/CD
-          pipelines.
+          Full-Stack Software Engineer with 3+ years of experience designing and building scalable
+          web applications and SaaS platforms using React, Node.js, NestJS, and MongoDB. Experienced
+          in system architecture, API development, and cloud deployments on AWS and modern hosting
+          platforms. Strong focus on performance optimization, multi-tenant SaaS systems, and
+          delivering production-ready solutions from concept to deployment. Passionate about
+          exploring AI/ML applications in web systems, system design, and cloud-native development.
         </p>
 
         <div className="flex justify-center md:justify-start">

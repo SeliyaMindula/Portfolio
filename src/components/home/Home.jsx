@@ -21,7 +21,7 @@ const SendIcon = () => (
 
 const Home = () => {
   const typedRole = useTypewriter(
-    ["Software Engineer", "Full-Stack Developer", "Problem Solver"],
+    ["Software Engineer", "Full-Stack Developer", "SaaS Developer"],
     80,
     1800
   );
@@ -70,9 +70,9 @@ const Home = () => {
               <span className="inline-block w-0.5 h-[1em] ml-0.5 bg-indigo-500 align-text-bottom animate-blink" />
             </h2>
             <p className="mt-4 max-w-md leading-relaxed text-zinc-600 dark:text-slate-400">
-              Highly motivated Full-Stack Developer with a strong foundation in design,
-              integration, and problem-solving. Passionate about translating business
-              requirements into technical solutions.
+              Full-Stack Software Engineer with 3+ years of experience designing and building
+              scalable web applications and SaaS platforms using React, Node.js, NestJS, and
+              MongoDB — from concept to production deployment on AWS and modern cloud platforms.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Button href="#contact">

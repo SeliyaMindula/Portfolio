@@ -2,6 +2,7 @@ export const NAV_LINKS = [
   { href: "#home", label: "Home", icon: "uil-estate" },
   { href: "#about", label: "About", icon: "uil-user" },
   { href: "#skills", label: "Skills", icon: "uil-file-alt" },
+  { href: "#projects", label: "Projects", icon: "uil-apps" },
   { href: "#qualifications", label: "Qualifications", icon: "uil-scenery" },
   { href: "#contact", label: "Contact", icon: "uil-message" },
 ];
@@ -17,8 +18,49 @@ export const SOCIAL_LINKS = [
 
 export const ABOUT_STATS = [
   { icon: "bx-award", title: "Experience", value: "3+ Years Working" },
-  { icon: "bx-briefcase-alt", title: "Completed", value: "30+ Projects" },
-  { icon: "bx-support", title: "Support", value: "Online 24/7" },
+  { icon: "bx-briefcase-alt", title: "Completed", value: "15+ Projects" },
+  { icon: "bx-cloud", title: "Cloud", value: "AWS & Azure" },
+];
+
+export const PROJECTS = [
+  {
+    title: "WebPulses AI",
+    subtitle: "AI-Powered Website Analysis Platform",
+    description:
+      "Built a full-stack SaaS platform for website performance analysis and diagnostics with Next.js frontend and Node.js/NestJS backend — integrating SEO checks, performance insights, and technical diagnostics, deployed on Vercel and Render.",
+    tech: ["Next.js", "Node.js", "NestJS", "Vercel", "Render"],
+    href: "https://www.webpulsesai.com/",
+    featured: true,
+  },
+  {
+    title: "Digitized.lk",
+    subtitle: "Multi-Tenant NFC Business Card SaaS Platform",
+    description:
+      "Personally designed and built a multi-tenant SaaS for NFC-based digital business cards with subdomain tenancy (*.connect.digitized.lk), organization-scoped isolation, subscription tiers, middleware-based tenant resolution, and NFC/QR digital identity sharing.",
+    tech: ["React", "Vite", "NestJS", "MongoDB", "AWS"],
+  },
+  {
+    title: "General Election 2025 Results",
+    subtitle: "Swarnavahini — Real-Time Live Platform",
+    description:
+      "Contributed to a high-traffic real-time election results platform with live data visualization and result aggregation during nationwide election coverage.",
+    tech: ["Next.js", "Node.js", "NestJS", "Real-Time Data"],
+  },
+  {
+    title: "NFC + QR Event Check-in",
+    subtitle: "DS College Award Ceremony MVP",
+    description:
+      "Built a browser-based event invitation and multi-scene attendance system using NFC and QR with admin dashboard, CSV guest upload, RSVP invite links, real-time scene check-in, NextAuth role-based access, and attendance reporting with CSV export.",
+    tech: ["Next.js", "MongoDB Atlas", "NextAuth", "Vercel"],
+  },
+  {
+    title: "Dinosaur Explorer",
+    subtitle: "Interactive Prehistoric Discovery App",
+    description:
+      "Built an interactive web app to explore 50+ dinosaurs with search, diet and period filters, and detailed profiles including height, weight, and descriptions.",
+    tech: ["React", "JavaScript", "GitHub Pages"],
+    href: "https://seliyamindula.github.io/Dinosaur-Explorer/",
+  },
 ];
 
 export const SKILL_GROUPS = [
@@ -26,11 +68,12 @@ export const SKILL_GROUPS = [
     title: "Frontend Development",
     skills: [
       { name: "React.js", level: "Advanced" },
+      { name: "Next.js", level: "Advanced" },
       { name: "Angular", level: "Advanced" },
       { name: "Vue.js", level: "Intermediate" },
       { name: "React Native", level: "Intermediate" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "HTML / CSS / JavaScript", level: "Advanced" },
+      { name: "TypeScript / JavaScript", level: "Advanced" },
+      { name: "HTML5 / CSS3 / TailwindCSS", level: "Advanced" },
     ],
   },
   {
@@ -38,10 +81,10 @@ export const SKILL_GROUPS = [
     skills: [
       { name: "Node.js", level: "Advanced" },
       { name: "NestJS", level: "Advanced" },
-      { name: "Java", level: "Intermediate" },
-      { name: "PHP", level: "Intermediate" },
-      { name: "C++ / C#", level: "Intermediate" },
       { name: "REST APIs", level: "Advanced" },
+      { name: "PHP", level: "Intermediate" },
+      { name: "Java", level: "Intermediate" },
+      { name: "C# / C++", level: "Intermediate" },
     ],
   },
   {
@@ -49,20 +92,19 @@ export const SKILL_GROUPS = [
     skills: [
       { name: "MongoDB", level: "Advanced" },
       { name: "MySQL", level: "Intermediate" },
-      { name: "SQL", level: "Advanced" },
-      { name: "SQL Server", level: "Intermediate" },
-      { name: "Firebase", level: "Intermediate" },
+      { name: "PostgreSQL", level: "Intermediate" },
+      { name: "Redis", level: "Intermediate" },
     ],
   },
   {
     title: "Cloud & DevOps",
     skills: [
-      { name: "AWS", level: "Intermediate" },
+      { name: "AWS (EC2, S3, Lambda, CloudWatch, IAM)", level: "Advanced" },
       { name: "Azure", level: "Intermediate" },
       { name: "Docker", level: "Intermediate" },
-      { name: "CI/CD Pipelines", level: "Intermediate" },
+      { name: "CI/CD Pipelines", level: "Advanced" },
+      { name: "Vercel / Render", level: "Advanced" },
       { name: "Git / GitHub / GitLab", level: "Advanced" },
-      { name: "Agile / Scrum", level: "Intermediate" },
     ],
   },
 ];
@@ -97,7 +139,7 @@ export const EXPERIENCE = [
   },
   {
     title: "Bluechip Technologies Asia (Pvt) Ltd",
-    subtitle: "React Web Developer - Internship",
+    subtitle: "Internship",
     period: "Jul 2021 - Jan 2022",
     align: "right",
   },
@@ -128,6 +170,7 @@ export const CONTACT_CARDS = [
 
 export const FOOTER_LINKS = [
   { href: "#about", label: "About" },
+  { href: "#projects", label: "Projects" },
   { href: "#qualifications", label: "Qualifications" },
   { href: "#skills", label: "Skills" },
 ];
