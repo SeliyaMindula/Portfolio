@@ -1,10 +1,13 @@
 import React from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import AboutImg from "../../assets/about.png";
 import CV from "../../assets/SeliyaCV.pdf";
 import { ABOUT_STATS } from "../../data/portfolio";
-import AnimatedSection from "../common/AnimatedSection";
-import Button from "../ui/Button";
-import Card from "../ui/Card";
+import SectionReveal from "../common/SectionReveal";
+import { StaggerGroup, StaggerItem } from "../common/StaggerGroup";
+import MagneticButton from "../ui/MagneticButton";
+import GlassCard from "../ui/GlassCard";
+import CountUp from "../ui/CountUp";
 import { Section, SectionHeader, Container } from "../ui/Section";
 
 const DownloadIcon = () => (
@@ -16,47 +19,60 @@ const DownloadIcon = () => (
   </svg>
 );
 
-const About = () => (
-  <Section id="about">
-    <SectionHeader title="About Me" subtitle="My introduction" />
+const About = () => {
+  const imgRef = React.useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: imgRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [prefersReducedMotion ? 0 : -24, prefersReducedMotion ? 0 : 24]);
 
-    <Container className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-      <AnimatedSection direction="left" delay={0.1}>
-        <img
-          src={AboutImg}
-          alt="Seliya Kumanayaka"
-          className="mx-auto w-64 md:w-80 rounded-2xl transition-transform hover:scale-[1.02]"
-        />
-      </AnimatedSection>
+  return (
+    <Section id="about">
+      <SectionHeader title="About Me" subtitle="My introduction" />
 
-      <AnimatedSection direction="right" delay={0.2}>
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          {ABOUT_STATS.map(({ icon, title, value }) => (
-            <Card key={title} className="text-center !p-4">
-              <i className={`bx ${icon} text-2xl text-brand-light dark:text-indigo-400`} />
-              <h3 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
-              <span className="text-[10px] text-zinc-500 dark:text-slate-500">{value}</span>
-            </Card>
-          ))}
-        </div>
+      <Container className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+        <SectionReveal direction="left" delay={0.1}>
+          <motion.div ref={imgRef} style={{ y: parallaxY }}>
+            <img
+              src={AboutImg}
+              alt="Seliya Kumanayaka"
+              className="mx-auto w-64 md:w-80 rounded-2xl transition-transform hover:scale-[1.02]"
+            />
+          </motion.div>
+        </SectionReveal>
 
-        <p className="mb-6 leading-relaxed text-zinc-600 dark:text-slate-400 md:text-left text-center">
-          Full-Stack Software Engineer with 3+ years of experience designing and building scalable
-          web applications and SaaS platforms using React, Node.js, NestJS, and MongoDB. Experienced
-          in system architecture, API development, and cloud deployments on AWS and modern hosting
-          platforms. Strong focus on performance optimization, multi-tenant SaaS systems, and
-          delivering production-ready solutions from concept to deployment. Passionate about
-          exploring AI/ML applications in web systems, system design, and cloud-native development.
-        </p>
+        <SectionReveal direction="right" delay={0.2}>
+          <StaggerGroup className="grid grid-cols-3 gap-3 mb-6">
+            {ABOUT_STATS.map(({ icon, title, value }) => (
+              <StaggerItem key={title}>
+                <GlassCard className="text-center !p-4 h-full">
+                  <i className={`bx ${icon} text-2xl text-indigo-600 dark:text-indigo-400`} />
+                  <h3 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
+                  <span className="text-[10px] text-zinc-500 dark:text-slate-500">
+                    <CountUp value={value} />
+                  </span>
+                </GlassCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
 
-        <div className="flex justify-center md:justify-start">
-          <Button href={CV} download>
-            Download CV <DownloadIcon />
-          </Button>
-        </div>
-      </AnimatedSection>
-    </Container>
-  </Section>
-);
+          <p className="mb-6 leading-relaxed text-zinc-600 dark:text-slate-400 md:text-left text-center">
+            Full-Stack Software Engineer with 3+ years of experience designing and building scalable
+            web applications and SaaS platforms using React, Node.js, NestJS, and MongoDB. Experienced
+            in system architecture, API development, and cloud deployments on AWS and modern hosting
+            platforms. Strong focus on performance optimization, multi-tenant SaaS systems, and
+            delivering production-ready solutions from concept to deployment. Passionate about
+            exploring AI/ML applications in web systems, system design, and cloud-native development.
+          </p>
+
+          <div className="flex justify-center md:justify-start">
+            <MagneticButton href={CV} download>
+              Download CV <DownloadIcon />
+            </MagneticButton>
+          </div>
+        </SectionReveal>
+      </Container>
+    </Section>
+  );
+};
 
 export default About;

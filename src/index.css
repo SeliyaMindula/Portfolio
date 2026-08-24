@@ -9,24 +9,23 @@
 
   body {
     @apply font-sans text-zinc-600 transition-colors duration-300;
-    @apply bg-[#fafafa] dark:text-slate-400 dark:bg-[#08080f];
+    @apply bg-[#fafafa] dark:text-slate-400 dark:bg-ink-950;
   }
 }
 
 @layer utilities {
-  .animate-delay-100 {
-    animation-delay: 0.1s;
+  /* !important is required: browser defaults set an explicit `cursor` on
+     links/buttons/inputs, which otherwise overrides the inherited `none`. */
+  .cursor-none-fine,
+  .cursor-none-fine * {
+    cursor: none !important;
   }
-  .animate-delay-200 {
-    animation-delay: 0.2s;
-  }
-  .animate-delay-300 {
-    animation-delay: 0.3s;
-  }
-  .animate-delay-400 {
-    animation-delay: 0.4s;
-  }
-  .animate-delay-500 {
-    animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }

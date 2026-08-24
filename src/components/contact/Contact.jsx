@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { AnimatePresence, motion } from "framer-motion";
 import { CONTACT_CARDS } from "../../data/portfolio";
-import AnimatedSection from "../common/AnimatedSection";
-import Button from "../ui/Button";
-import Card from "../ui/Card";
+import SectionReveal from "../common/SectionReveal";
+import { StaggerGroup, StaggerItem } from "../common/StaggerGroup";
+import MagneticButton from "../ui/MagneticButton";
+import GlassCard from "../ui/GlassCard";
 import { Section, SectionHeader, Container } from "../ui/Section";
 
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_0wgu52u";
@@ -18,7 +20,7 @@ const SendIcon = () => (
 );
 
 const inputClass =
-  "w-full rounded-xl border border-black/20 bg-white px-5 py-4 text-zinc-800 outline-none transition-all focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 dark:border-slate-700/50 dark:bg-[#161622] dark:text-slate-100 dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20";
+  "w-full rounded-xl border border-black/20 bg-white px-5 py-4 text-zinc-800 outline-none transition-all placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 dark:border-white/15 dark:bg-white/[0.06] dark:backdrop-blur-xl dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400/20 dark:focus:shadow-glow-sm";
 
 const Contact = () => {
   const form = useRef();
@@ -59,39 +61,41 @@ const Contact = () => {
       <SectionHeader title="Get in touch" subtitle="Contact Me" />
 
       <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16 justify-center">
-        <AnimatedSection direction="left" delay={0.1}>
+        <SectionReveal direction="left" delay={0.1}>
           <h3 className="mb-6 text-center text-lg font-semibold text-zinc-800 dark:text-slate-100">
             Talk to me
           </h3>
-          <div className="space-y-4 max-w-sm mx-auto">
+          <StaggerGroup className="space-y-4 max-w-sm mx-auto">
             {CONTACT_CARDS.map(({ icon, title, value, href, external }) => (
-              <Card key={title} className="text-center">
-                <i className={`bx ${icon} text-3xl text-brand-light dark:text-indigo-400`} />
-                <h4 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h4>
-                <p className="my-2 text-xs text-zinc-500 break-all dark:text-slate-500">{value}</p>
-                {external ? (
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium text-brand-light hover:gap-2 transition-all dark:text-indigo-400"
-                  >
-                    Write me <i className="bx bx-right-arrow-alt" />
-                  </a>
-                ) : (
-                  <a
-                    href={href}
-                    className="inline-flex items-center gap-1 text-xs font-medium text-brand-light hover:gap-2 transition-all dark:text-indigo-400"
-                  >
-                    Write me <i className="bx bx-right-arrow-alt" />
-                  </a>
-                )}
-              </Card>
+              <StaggerItem key={title}>
+                <GlassCard className="text-center">
+                  <i className={`bx ${icon} text-3xl text-indigo-600 dark:text-indigo-400`} />
+                  <h4 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h4>
+                  <p className="my-2 text-xs text-zinc-500 break-all dark:text-slate-500">{value}</p>
+                  {external ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:gap-2 transition-all dark:text-indigo-400"
+                    >
+                      Write me <i className="bx bx-right-arrow-alt" />
+                    </a>
+                  ) : (
+                    <a
+                      href={href}
+                      className="inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:gap-2 transition-all dark:text-indigo-400"
+                    >
+                      Write me <i className="bx bx-right-arrow-alt" />
+                    </a>
+                  )}
+                </GlassCard>
+              </StaggerItem>
             ))}
-          </div>
-        </AnimatedSection>
+          </StaggerGroup>
+        </SectionReveal>
 
-        <AnimatedSection direction="right" delay={0.2}>
+        <SectionReveal direction="right" delay={0.2}>
           <h3 className="mb-6 text-center text-lg font-semibold text-zinc-800 dark:text-slate-100">
             Write me your project
           </h3>
@@ -99,7 +103,7 @@ const Contact = () => {
             <div className="relative">
               <label
                 htmlFor="user_name"
-                className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400"
+                className="absolute -top-2.5 left-4 z-10 bg-[#fafafa] px-1.5 text-xs font-medium text-indigo-600 dark:bg-ink-950 dark:text-indigo-300"
               >
                 Name
               </label>
@@ -116,7 +120,7 @@ const Contact = () => {
             <div className="relative">
               <label
                 htmlFor="user_email"
-                className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400"
+                className="absolute -top-2.5 left-4 z-10 bg-[#fafafa] px-1.5 text-xs font-medium text-indigo-600 dark:bg-ink-950 dark:text-indigo-300"
               >
                 Mail
               </label>
@@ -133,7 +137,7 @@ const Contact = () => {
             <div className="relative">
               <label
                 htmlFor="message"
-                className="absolute -top-2.5 left-4 bg-white px-1 text-xs text-brand-light dark:bg-[#161622] dark:text-indigo-400"
+                className="absolute -top-2.5 left-4 z-10 bg-[#fafafa] px-1.5 text-xs font-medium text-indigo-600 dark:bg-ink-950 dark:text-indigo-300"
               >
                 Project
               </label>
@@ -147,25 +151,41 @@ const Contact = () => {
               />
             </div>
 
-            {status === "success" && (
-              <p className="text-sm text-green-600 dark:text-green-400 text-center">
-                Message sent successfully! I will get back to you soon.
-              </p>
-            )}
+            <AnimatePresence mode="wait">
+              {status === "success" && (
+                <motion.p
+                  key="success"
+                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-sm text-green-600 dark:text-green-400 text-center"
+                >
+                  Message sent successfully! I will get back to you soon.
+                </motion.p>
+              )}
 
-            {status === "error" && (
-              <p className="text-sm text-red-600 dark:text-red-400 text-center">{errorMessage}</p>
-            )}
+              {status === "error" && (
+                <motion.p
+                  key="error"
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="text-sm text-red-600 dark:text-red-400 text-center"
+                >
+                  {errorMessage}
+                </motion.p>
+              )}
+            </AnimatePresence>
 
-            <Button
+            <MagneticButton
               type="submit"
               className="w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
               disabled={status === "sending"}
             >
               {status === "sending" ? "Sending..." : "Send Message"} {status !== "sending" && <SendIcon />}
-            </Button>
+            </MagneticButton>
           </form>
-        </AnimatedSection>
+        </SectionReveal>
       </Container>
     </Section>
   );

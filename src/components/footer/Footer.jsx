@@ -3,14 +3,14 @@ import { FOOTER_LINKS, FOOTER_SOCIAL } from "../../data/portfolio";
 import { Container } from "../ui/Section";
 
 const Footer = () => (
-  <footer className="border-t border-black/10 bg-white py-8 dark:border-slate-700/50 dark:bg-[#161622]">
+  <footer className="border-t border-black/10 bg-white py-8 dark:border-white/10 dark:bg-ink-900">
     <Container className="text-center">
       <ul className="flex justify-center gap-6 mb-6">
         {FOOTER_LINKS.map(({ href, label }) => (
           <li key={href}>
             <a
               href={href}
-              className="text-sm text-zinc-800 hover:text-brand-light transition-colors dark:text-slate-100 dark:hover:text-indigo-400"
+              className="text-sm text-zinc-800 hover:text-indigo-600 transition-colors dark:text-slate-100 dark:hover:text-indigo-400"
             >
               {label}
             </a>
@@ -25,7 +25,7 @@ const Footer = () => (
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-800 text-white transition-all hover:bg-black dark:bg-zinc-800 dark:hover:bg-gradient-to-br dark:hover:from-indigo-500 dark:hover:to-violet-500"
+            className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-800 text-white transition-all hover:bg-black dark:bg-white/5 dark:border dark:border-white/10 dark:hover:bg-accent-gradient dark:hover:text-ink-950 dark:hover:border-transparent"
           >
             <i className={`bx ${icon}`} />
           </a>
