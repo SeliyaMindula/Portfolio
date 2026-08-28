@@ -47,7 +47,7 @@ const About = () => {
                 <GlassCard className="text-center !p-4 h-full">
                   <i className={`bx ${icon} text-2xl text-indigo-600 dark:text-indigo-400`} />
                   <h3 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
-                  <span className="text-[10px] text-zinc-500 dark:text-slate-500">
+                  <span className="mt-1 block text-xs font-medium leading-snug text-zinc-700 dark:text-slate-300">
                     <CountUp value={value} />
                   </span>
                 </GlassCard>
@@ -56,7 +56,7 @@ const About = () => {
           </StaggerGroup>
 
           <p className="mb-6 leading-relaxed text-zinc-600 dark:text-slate-400 md:text-left text-center">
-            Full-Stack Software Engineer with 3+ years of experience designing and building scalable
+            Full-Stack Software Engineer with 4+ years of experience designing and building scalable
             web applications and SaaS platforms using React, Node.js, NestJS, and MongoDB. Experienced
             in system architecture, API development, and cloud deployments on AWS and modern hosting
             platforms. Strong focus on performance optimization, multi-tenant SaaS systems, and

@@ -105,7 +105,7 @@ const Home = () => {
               {...fadeUp(0.6, prefersReducedMotion)}
               className="mt-4 max-w-md leading-relaxed text-zinc-600 dark:text-slate-400"
             >
-              Full-Stack Software Engineer with 3+ years of experience designing and building
+              Full-Stack Software Engineer with 4+ years of experience designing and building
               scalable web applications and SaaS platforms using React, Node.js, NestJS, and
               MongoDB — from concept to production deployment on AWS and modern cloud platforms.
             </motion.p>

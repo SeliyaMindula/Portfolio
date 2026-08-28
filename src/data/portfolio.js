@@ -17,7 +17,7 @@ export const SOCIAL_LINKS = [
 ];
 
 export const ABOUT_STATS = [
-  { icon: "bx-award", title: "Experience", value: "3+ Years Working" },
+  { icon: "bx-award", title: "Experience", value: "4+ Years Working" },
   { icon: "bx-briefcase-alt", title: "Completed", value: "15+ Projects" },
   { icon: "bx-cloud", title: "Cloud", value: "AWS & Azure" },
 ];
