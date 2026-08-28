@@ -31,7 +31,7 @@ const fadeUp = (delay, reduced) => ({
 const Home = () => {
   const prefersReducedMotion = useReducedMotion();
   const typedRole = useTypewriter(
-    ["Software Engineer", "Full-Stack Developer", "SaaS Developer"],
+    ["Software Engineer", "Full-Stack Developer", "React Native Developer"],
     80,
     1800
   );
@@ -105,9 +105,9 @@ const Home = () => {
               {...fadeUp(0.6, prefersReducedMotion)}
               className="mt-4 max-w-md leading-relaxed text-zinc-600 dark:text-slate-400"
             >
-              Full-Stack Software Engineer with 4+ years of experience designing and building
-              scalable web applications and SaaS platforms using React, Node.js, NestJS, and
-              MongoDB — from concept to production deployment on AWS and modern cloud platforms.
+              Full-Stack Software Engineer with 4+ years of experience building scalable web and
+              mobile applications using React, React Native, Expo, Node.js, NestJS, and MongoDB —
+              from concept to production on AWS and modern cloud platforms.
             </motion.p>
             <motion.div {...fadeUp(0.7, prefersReducedMotion)} className="mt-6 flex flex-wrap gap-4">
               <MagneticButton href="#contact">

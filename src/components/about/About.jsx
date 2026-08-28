@@ -57,11 +57,11 @@ const About = () => {
 
           <p className="mb-6 leading-relaxed text-zinc-600 dark:text-slate-400 md:text-left text-center">
             Full-Stack Software Engineer with 4+ years of experience designing and building scalable
-            web applications and SaaS platforms using React, Node.js, NestJS, and MongoDB. Experienced
-            in system architecture, API development, and cloud deployments on AWS and modern hosting
-            platforms. Strong focus on performance optimization, multi-tenant SaaS systems, and
-            delivering production-ready solutions from concept to deployment. Passionate about
-            exploring AI/ML applications in web systems, system design, and cloud-native development.
+            web and mobile applications using React, React Native, Expo, TypeScript, Node.js, NestJS,
+            and MongoDB. Experienced in cross-platform mobile development, system architecture, RESTful
+            API integration, and cloud deployments on AWS and modern hosting platforms. Strong focus on
+            performance optimization, maintainability, and delivering production-ready solutions from
+            concept to deployment across web and mobile.
           </p>
 
           <div className="flex justify-center md:justify-start">

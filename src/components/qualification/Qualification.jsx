@@ -5,11 +5,14 @@ import SectionReveal from "../common/SectionReveal";
 import GlassCard from "../ui/GlassCard";
 import { Section, SectionHeader, Container } from "../ui/Section";
 
-const TimelineItem = ({ title, subtitle, period, align }) => {
+const TimelineItem = ({ title, subtitle, period, description, align }) => {
   const card = (
     <GlassCard tilt={false} className="!p-5">
       <h3 className="font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
       <p className="mt-1 text-sm text-indigo-600 dark:text-indigo-400">{subtitle}</p>
+      {description && (
+        <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-slate-400">{description}</p>
+      )}
       <p className="mt-2 flex items-center gap-1 text-xs text-zinc-500 dark:text-slate-500">
         <i className="uil uil-calendar-alt" /> {period}
       </p>

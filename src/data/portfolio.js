@@ -71,7 +71,6 @@ export const SKILL_GROUPS = [
       { name: "Next.js", level: "Advanced" },
       { name: "Angular", level: "Advanced" },
       { name: "Vue.js", level: "Intermediate" },
-      { name: "React Native", level: "Intermediate" },
       { name: "TypeScript / JavaScript", level: "Advanced" },
       { name: "HTML5 / CSS3 / TailwindCSS", level: "Advanced" },
     ],
@@ -107,6 +106,17 @@ export const SKILL_GROUPS = [
       { name: "Git / GitHub / GitLab", level: "Advanced" },
     ],
   },
+  {
+    title: "Mobile Development",
+    skills: [
+      { name: "React Native", level: "Advanced" },
+      { name: "Expo", level: "Advanced" },
+      { name: "TypeScript", level: "Advanced" },
+      { name: "Cross-Platform UI", level: "Advanced" },
+      { name: "REST API Integration", level: "Advanced" },
+      { name: "Performance Optimization", level: "Advanced" },
+    ],
+  },
 ];
 
 export const EDUCATION = [
@@ -130,6 +140,8 @@ export const EXPERIENCE = [
     subtitle: "Software Engineer",
     period: "Jun 2024 - Present",
     align: "right",
+    description:
+      "Developing and maintaining a cross-platform mobile application with React Native, Expo, and TypeScript while building scalable web features. Collaborating with cross-functional teams to improve performance, integrate RESTful APIs, and deliver reliable production-ready experiences across mobile and backend systems.",
   },
   {
     title: "Yara Technologies (Pvt) Ltd",
