@@ -18,7 +18,13 @@ const SkillCard = ({ title, skills }) => (
       {skills.map(({ name, level }) => (
         <div key={name} className="transition-transform hover:translate-x-1">
           <div className="flex gap-2">
-            <i className="bx bx-badge-check text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />
+            <motion.i
+              className="bx bx-badge-check text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0"
+              initial={{ scale: 0, rotate: -45 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 320, damping: 16 }}
+            />
             <div className="flex-1">
               <p className="text-sm font-medium text-zinc-800 dark:text-slate-100">{name}</p>
               <span className="text-[10px] text-zinc-500 dark:text-slate-500 dark:bg-indigo-400/10 dark:px-2 dark:py-0.5 dark:rounded-full">

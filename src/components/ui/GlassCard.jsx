@@ -45,7 +45,7 @@ const GlassCard = ({ children, className = "", tilt = true, glow = true, ...prop
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 hidden dark:block"
           style={{
-            background: `radial-gradient(180px circle at ${glowX} ${glowY}, rgba(34,211,238,0.18), transparent 70%)`,
+            background: `radial-gradient(180px circle at ${glowX} ${glowY}, rgba(129,140,248,0.18), transparent 70%)`,
           }}
         />
       )}

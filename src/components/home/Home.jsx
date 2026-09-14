@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import profileImg from "../../assets/profile.jpg";
 import { useTypewriter } from "../../hooks/useTypewriter";
@@ -8,6 +8,8 @@ import MagneticButton from "../ui/MagneticButton";
 import RevealText from "../ui/RevealText";
 import AnimatedBackground from "../common/AnimatedBackground";
 import { Container } from "../ui/Section";
+
+const ParticleField = lazy(() => import("../common/ParticleField"));
 
 const SendIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -39,6 +41,11 @@ const Home = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-24 md:pt-28 pb-12">
       <AnimatedBackground />
+      {!prefersReducedMotion && (
+        <Suspense fallback={null}>
+          <ParticleField />
+        </Suspense>
+      )}
 
       <Container>
         <div className="grid items-center gap-10 md:grid-cols-[auto_1fr_1.2fr] md:gap-8">

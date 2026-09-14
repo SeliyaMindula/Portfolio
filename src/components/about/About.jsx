@@ -45,7 +45,14 @@ const About = () => {
             {ABOUT_STATS.map(({ icon, title, value }) => (
               <StaggerItem key={title}>
                 <GlassCard className="text-center !p-4 h-full">
-                  <i className={`bx ${icon} text-2xl text-indigo-600 dark:text-indigo-400`} />
+                  <motion.i
+                    className={`bx ${icon} inline-block text-2xl text-indigo-600 dark:text-indigo-400`}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.2, rotate: 8 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 15 }}
+                  />
                   <h3 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h3>
                   <span className="mt-1 block text-xs font-medium leading-snug text-zinc-700 dark:text-slate-300">
                     <CountUp value={value} />

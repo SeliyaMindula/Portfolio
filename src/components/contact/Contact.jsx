@@ -69,7 +69,14 @@ const Contact = () => {
             {CONTACT_CARDS.map(({ icon, title, value, href, external }) => (
               <StaggerItem key={title}>
                 <GlassCard className="text-center">
-                  <i className={`bx ${icon} text-3xl text-indigo-600 dark:text-indigo-400`} />
+                  <motion.i
+                    className={`bx ${icon} inline-block text-3xl text-indigo-600 dark:text-indigo-400`}
+                    initial={{ scale: 0, rotate: -30 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.2, rotate: 8 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 15 }}
+                  />
                   <h4 className="mt-2 text-sm font-medium text-zinc-800 dark:text-slate-100">{title}</h4>
                   <p className="my-2 text-xs text-zinc-500 break-all dark:text-slate-500">{value}</p>
                   {external ? (
