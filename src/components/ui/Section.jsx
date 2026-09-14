@@ -4,12 +4,20 @@ import SectionReveal from "../common/SectionReveal";
 import FloatingShapes from "../common/FloatingShapes";
 import SectionShape from "../common/SectionShape";
 
+const SECTION_SHAPES = {
+  about: { kind: "blob", flip: false },
+  skills: { kind: "torus", flip: true },
+  projects: { kind: "knot", flip: false },
+  qualifications: { kind: "octa", flip: true },
+  contact: { kind: "dodeca", flip: false },
+};
+
 export const Section = ({ id, children, className = "", decor = true }) => {
-  const flip = (id?.length || 0) % 2 === 1;
+  const shape = SECTION_SHAPES[id] || { kind: "blob", flip: false };
   return (
     <section id={id} className={`relative overflow-hidden py-16 md:py-24 ${className}`}>
-      {decor && <FloatingShapes flip={flip} />}
-      {decor && <SectionShape flip={flip} />}
+      {decor && <FloatingShapes flip={shape.flip} />}
+      {decor && <SectionShape flip={shape.flip} kind={shape.kind} />}
       {children}
     </section>
   );

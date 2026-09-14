@@ -9,7 +9,7 @@ const MorphBlobCanvas = lazy(() => import("./MorphBlobCanvas"));
  * lazy-created the first time the section approaches the viewport, and
  * its render loop pauses while the section is off screen. Desktop only.
  */
-const SectionShape = ({ flip = false }) => {
+const SectionShape = ({ flip = false, kind = "blob" }) => {
   const ref = useRef(null);
   const prefersReducedMotion = useReducedMotion();
   const seen = useInView(ref, { once: true, margin: "300px" });
@@ -28,7 +28,7 @@ const SectionShape = ({ flip = false }) => {
     >
       {seen && (
         <Suspense fallback={null}>
-          <MorphBlobCanvas dark={theme === "dark"} flip={flip} active={active} />
+          <MorphBlobCanvas dark={theme === "dark"} flip={flip} active={active} kind={kind} />
         </Suspense>
       )}
     </div>
